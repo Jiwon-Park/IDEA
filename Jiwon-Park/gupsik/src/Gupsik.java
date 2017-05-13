@@ -9,10 +9,10 @@ public class Gupsik extends JFrame{
 	/**
 	 *
 	 * MADE BY JIWON PARK
-	 * 2607 ¹ÚÁö¿ø °´Ã¼ÁöÇâÇÁ·Î±×·¡¹Ö °úÁ¦
+	 * 2607 ë°•ì§€ì› ê°ì²´ì§€í–¥í”„ë¡œê·¸ë˜ë° ê³¼ì œ
 	 * 
 	 */
-	//»çÀü º¯¼ö
+	//ì‚¬ì „ ë³€ìˆ˜
 	private static final long serialVersionUID = -3116822371356086835L;
 	int year, month, date;
 	Calendar cal= Calendar.getInstance();
@@ -20,14 +20,14 @@ public class Gupsik extends JFrame{
 	Toolkit tools = Toolkit.getDefaultToolkit();
 	Dimension screen = tools.getScreenSize();
 	Container c;
-	//ÀÌ¹ÌÁö¸¦ ¹Ş¾Æ¿É½Ã´Ù.
+	//ì´ë¯¸ì§€ë¥¼ ë°›ì•„ì˜µì‹œë‹¤.
 	Image lefti = tools.getImage(getClass().getResource("left.png"));
 	Image righti = tools.getImage(getClass().getResource("right.png"));
 	ImageIcon L = new ImageIcon(lefti);
 	ImageIcon R = new ImageIcon(righti);
 	final int y= cal.get(Calendar.YEAR), m=cal.get(Calendar.MONTH)+1, d=cal.get(Calendar.DATE);
 	public Gupsik(){
-		//»ı¼ºÀÚ
+		//ìƒì„±ì
 		year =cal.get(Calendar.YEAR);
 		month=cal.get(Calendar.MONTH)+1;
 		date=cal.get(Calendar.DATE);
@@ -41,13 +41,13 @@ public class Gupsik extends JFrame{
 	}
 	
 	boolean dateinmonth(int month, int date){
-		//ÀÌ ³¯Â¥°¡ ÇöÀç ´Ş¿¡ ÀÖ´ÂÁö ¾Ë¾Æ³½´Ù.
+		//ì´ ë‚ ì§œê°€ í˜„ì¬ ë‹¬ì— ìˆëŠ”ì§€ ì•Œì•„ë‚¸ë‹¤.
 		if(date<1)return false;
 		if(month == 1||month == 3||month == 5||month == 7||month == 8||month == 10||month == 12){
 			if(date>31)return false;
 		}
 		else if(month==2){
-			//GregorianCalendar Å¬·¡½º´Â Á¤¸» ÁÁ½À´Ï´Ù.
+			//GregorianCalendar í´ë˜ìŠ¤ëŠ” ì •ë§ ì¢‹ìŠµë‹ˆë‹¤.
 			GregorianCalendar gr = new GregorianCalendar();
 			if(gr.isLeapYear(cal.get(Calendar.YEAR))){
 				if(date>29)return false;
@@ -62,7 +62,7 @@ public class Gupsik extends JFrame{
 	}
 	
 	void run(){
-		//¹Ş¾Æ¿À´Ù°¡ ´Ù¸¥ ´Ş·Î ³Ñ¾î°¡¸é Àâ¾Æ¾ßµÊ
+		//ë°›ì•„ì˜¤ë‹¤ê°€ ë‹¤ë¥¸ ë‹¬ë¡œ ë„˜ì–´ê°€ë©´ ì¡ì•„ì•¼ë¨
 		if(!dateinmonth(month, date+n)){
 			if(date+n<1){
 				month--;
@@ -75,22 +75,22 @@ public class Gupsik extends JFrame{
 				date=1-n;
 			}
 		}
-		//¹Ş¾Æ¿Ã url
+		//ë°›ì•„ì˜¬ url
 		String url="http://kwangju-s.hs.kr/xboard/board.php?mode=list&tbnum=44&sCat=0&"
 				+ "page=1&keyset=&searchword=&mode1=&sYear="+
 				year+"&sMonth="+mon(month)+"&sDay="+mon(date+n);
 		
-		JMenuItem r = new JMenuItem("³¯Â¥ ÀÔ·Â");
-		r.setFont(new Font("¹ÙÅÁ", Font.PLAIN, 15));
+		JMenuItem r = new JMenuItem("ë‚ ì§œ ì…ë ¥");
+		r.setFont(new Font("ë°”íƒ•", Font.PLAIN, 15));
 		r.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				String a = JOptionPane.showInputDialog(null, "Çü½Ä : x¿ù x (¶ç¾î¾²±â Áß¿ä)", "³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä", JOptionPane.QUESTION_MESSAGE);
+				String a = JOptionPane.showInputDialog(null, "í˜•ì‹ : xì›” x (ë„ì–´ì“°ê¸° ì¤‘ìš”)", "ë‚ ì§œë¥¼ ì…ë ¥í•˜ì„¸ìš”", JOptionPane.QUESTION_MESSAGE);
 				try{
 					int index=0;
-					while(a.charAt(index)!='¿ù')index++;
+					while(a.charAt(index)!='ì›”')index++;
 					int m = Integer.parseInt(a.substring(0, index));
 					index+=2;
 					int d = Integer.parseInt(a.substring(index));
@@ -103,7 +103,7 @@ public class Gupsik extends JFrame{
 					}
 				}
 				catch(Exception e){
-					JOptionPane.showMessageDialog(null, "¾ç½Ä¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù",null, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ì–‘ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤",null, JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
@@ -116,7 +116,7 @@ public class Gupsik extends JFrame{
 		menu.setBackground(Color.WHITE);
 		menu.setBorderPainted(false);
 		setJMenuBar(menu);
-		//¿ŞÂÊ ¿À¸¥ÂÊ ¹öÆ° ¸¸µé±â
+		//ì™¼ìª½ ì˜¤ë¥¸ìª½ ë²„íŠ¼ ë§Œë“¤ê¸°
 		JButton left = new JButton((Icon) L);
 		left.setActionCommand("left");
 		left.setBorderPainted(false);
@@ -130,27 +130,27 @@ public class Gupsik extends JFrame{
 		right.setBackground(Color.white);
 		right.addActionListener(new ButtonAction());
 		c.add(left);
-		//±Ş½ÄÀ» ¹Ş¾Æ¿ÀÀÚ
+		//ê¸‰ì‹ì„ ë°›ì•„ì˜¤ì
 		Vector<String> gupsik = getGupsik(url, month, date+n);
 		
-		//¾ç½É¾øÀÌ ¾ÆÄ§Á¡½ÉÀú³á ±¸ºĞ¿¡ °³Çà¹®ÀÚ ¼¼°³¾²¸é ¿¡·¯³ª´Ï±î ÀâÀÚ
+		//ì–‘ì‹¬ì—†ì´ ì•„ì¹¨ì ì‹¬ì €ë… êµ¬ë¶„ì— ê°œí–‰ë¬¸ì ì„¸ê°œì“°ë©´ ì—ëŸ¬ë‚˜ë‹ˆê¹Œ ì¡ì
 		for(int i=0; i<gupsik.size()-1; i++){
 			if(gupsik.get(i).equals("") && gupsik.get(i+1).equals(""))
 				gupsik.remove(i);
 		}
 		
-		//¿À´ÃÀÌ¸é Å¸ÀÌÆ²ÀÌ ¿À´ÃÀÇ ±Ş½Ä, ¾Æ´Ï¸é ¾ğÁ¨°¡ÀÇ ±Ş½Ä
+		//ì˜¤ëŠ˜ì´ë©´ íƒ€ì´í‹€ì´ ì˜¤ëŠ˜ì˜ ê¸‰ì‹, ì•„ë‹ˆë©´ ì–¸ì  ê°€ì˜ ê¸‰ì‹
 		if(y==year && m==month && d ==date+n){
-			this.setTitle("¿À´ÃÀÇ ±Ş½Ä - "+Integer.toString(month)+"¿ù "+date+"ÀÏ" + " (made by Jiwon Park)");
+			this.setTitle("ì˜¤ëŠ˜ì˜ ê¸‰ì‹ - "+Integer.toString(month)+"ì›” "+date+"ì¼" + " (made by Jiwon Park)");
 		}
 		else{
-			this.setTitle("¾ğÁ¨°¡ÀÇ ±Ş½Ä - "+Integer.toString(month)+"¿ù "+(date+n)+"ÀÏ"+" (made by Jiwon Park)");
+			this.setTitle("ì–¸ì  ê°€ì˜ ê¸‰ì‹ - "+Integer.toString(month)+"ì›” "+(date+n)+"ì¼"+" (made by Jiwon Park)");
 		}
-		//±Ş½ÄÀÌ ¾øÀ» ¶§´Â?
+		//ê¸‰ì‹ì´ ì—†ì„ ë•ŒëŠ”?
 		try {if(gupsik.get(0).equals("int")){
 			c.removeAll();
-			JLabel lb = new JLabel("ÀÎÅÍ³İ ¿¬°á È®ÀÎÁ»¿ä",JLabel.CENTER);
-			lb.setFont(new Font("¹ÙÅÁ", Font.BOLD, 100));
+			JLabel lb = new JLabel("ì¸í„°ë„· ì—°ê²° í™•ì¸ì¢€ìš”",JLabel.CENTER);
+			lb.setFont(new Font("ë°”íƒ•", Font.BOLD, 100));
 			c.add(lb);
 			this.setVisible(true);
 			return;
@@ -160,44 +160,44 @@ public class Gupsik extends JFrame{
 			
 		}
 		if(gupsik.size()<3){
-			JLabel label = new JLabel("<html>ÀÌ ³¯Àº ±Ş½ÄÀÌ ¾ø°Å³ª µî·ÏµÇÁö ¾Ê¾Ò½À´Ï´Ù.</html>", JLabel.CENTER);
-			label.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 40));
+			JLabel label = new JLabel("<html>ì´ ë‚ ì€ ê¸‰ì‹ì´ ì—†ê±°ë‚˜ ë“±ë¡ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.</html>", JLabel.CENTER);
+			label.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 40));
 			add(label);
 			add(right);
 			setVisible(true);
 			return;
 		}
 		
-		// Ãâ·Â
+		// ì¶œë ¥
 		JPanel[] panel = new JPanel[3];
 		for(int i=0; i<3; i++)
 			panel[i]=new JPanel(new GridLayout(0,1, 10, 0));
-		JLabel l = new JLabel("¾ÆÄ§", JLabel.CENTER);
-		l.setFont(new Font("¹ÙÅÁ", Font.PLAIN, 30));
+		JLabel l = new JLabel("ì•„ì¹¨", JLabel.CENTER);
+		l.setFont(new Font("ë°”íƒ•", Font.PLAIN, 30));
 		l.setOpaque(true);
 		l.setBackground(Color.white);
 		panel[0].add(l);
 		int k=0;
-		//±Ş½Ä ¾²´Â »ç¶÷ÀÌ ¾ÆÄ§¹ä Àü¿¡ °³Çà¹®ÀÚ ´Ş¾Æ³õÀ¸¸é ´Ù Á¦°ÅÇØ¾ßµÊ
+		//ê¸‰ì‹ ì“°ëŠ” ì‚¬ëŒì´ ì•„ì¹¨ë°¥ ì „ì— ê°œí–‰ë¬¸ì ë‹¬ì•„ë†“ìœ¼ë©´ ë‹¤ ì œê±°í•´ì•¼ë¨
 		while(gupsik.get(k)==""){
 			gupsik.remove(k);
 		}
-		//½±°í ºü¸£°í °£ÆíÇÑ for-each
+		//ì‰½ê³  ë¹ ë¥´ê³  ê°„í¸í•œ for-each
 		for(String element : gupsik){
-			//¾ÆÄ§ Á¡½É Àú³áÀº °³Çà¹®ÀÚ µÎ°³·Î ±¸ºĞµÇ¹Ç·Î ±× »çÀÌ¸¦ splitÇÏ¸é Áß°£¿¡ ºó ¹®ÀÚ¿­ÀÌ ³ª¿À°Ô µÈ´Ù.
-			//¹®ÀÚ¿­À» <html></html>·Î ½Î¸é ÀÚµ¿ÁÙ¹Ù²ŞÀÌ µÈ´Ù.
+			//ì•„ì¹¨ ì ì‹¬ ì €ë…ì€ ê°œí–‰ë¬¸ì ë‘ê°œë¡œ êµ¬ë¶„ë˜ë¯€ë¡œ ê·¸ ì‚¬ì´ë¥¼ splití•˜ë©´ ì¤‘ê°„ì— ë¹ˆ ë¬¸ìì—´ì´ ë‚˜ì˜¤ê²Œ ëœë‹¤.
+			//ë¬¸ìì—´ì„ <html></html>ë¡œ ì‹¸ë©´ ìë™ì¤„ë°”ê¿ˆì´ ëœë‹¤.
 			if(element.equals("")){
 				k++;
 				if(k==1){
-					JLabel label = new JLabel("<html>Á¡½É</html>", JLabel.CENTER);
-					label.setFont(new Font("¹ÙÅÁ", Font.PLAIN,30));
+					JLabel label = new JLabel("<html>ì ì‹¬</html>", JLabel.CENTER);
+					label.setFont(new Font("ë°”íƒ•", Font.PLAIN,30));
 					label.setOpaque(true);
 					label.setBackground(Color.white);
 					panel[k].add(label);
 				}
 				else if (k==2){
-					JLabel label = new JLabel("<html>Àú³á</html>", JLabel.CENTER);
-					label.setFont(new Font("¹ÙÅÁ", Font.PLAIN,30));
+					JLabel label = new JLabel("<html>ì €ë…</html>", JLabel.CENTER);
+					label.setFont(new Font("ë°”íƒ•", Font.PLAIN,30));
 					label.setOpaque(true);
 					label.setBackground(Color.white);
 					panel[k].add(label);
@@ -206,17 +206,17 @@ public class Gupsik extends JFrame{
 				
 				continue;
 			}
-			//¸Ş´º Ãß°¡
+			//ë©”ë‰´ ì¶”ê°€
 			JLabel label = new JLabel("<html>"+element+"</html>", JLabel.CENTER);
-			label.setFont(new Font("¹ÙÅÁ", Font.PLAIN,30));
+			label.setFont(new Font("ë°”íƒ•", Font.PLAIN,30));
 			label.setOpaque(true);
 			label.setBackground(Color.white);
 			panel[k].add(label);
 		}
 		if(k==1){
-			//Àú³á¸¸ ¾øÀ» ¶§´Â ´ëÇ¥ÀûÀ¸·Î Åğ»çÀÏ, ¾Æ´Ï Åğ»çÀÏ¹Û¿¡ ¾ø´Ù.
-			JLabel label = new JLabel ("<html>Àú³áÀº Åğ»çÀÏÀÌ¶ó¼­ ¾øÀ½</html>", JLabel.CENTER);
-			label.setFont(new Font("¹ÙÅÁ", Font.PLAIN, 30));
+			//ì €ë…ë§Œ ì—†ì„ ë•ŒëŠ” ëŒ€í‘œì ìœ¼ë¡œ í‡´ì‚¬ì¼, ì•„ë‹ˆ í‡´ì‚¬ì¼ë°–ì— ì—†ë‹¤.
+			JLabel label = new JLabel ("<html>ì €ë…ì€ í‡´ì‚¬ì¼ì´ë¼ì„œ ì—†ìŒ</html>", JLabel.CENTER);
+			label.setFont(new Font("ë°”íƒ•", Font.PLAIN, 30));
 			label.setOpaque(true);
 			label.setBackground(Color.white);
 			panel[2].add(label);
@@ -231,21 +231,21 @@ public class Gupsik extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		//ÇÁ·Î±×·¥ÀÇ ÁøÀÔÁ¡
+		//í”„ë¡œê·¸ë¨ì˜ ì§„ì…ì 
 		Gupsik g= new Gupsik();
 		g.run();
 		return;
 	}
 	
 	public String mon(int month){
-		//5¿ùÀ» 05·Î ¹Ù²Û´Ù.
+		//5ì›”ì„ 05ë¡œ ë°”ê¾¼ë‹¤.
 		if(month<10)return "0"+month;
 		else return Integer.toString(month);
 	}
 	
 	
     public Vector<String> getGupsik(String urlToRead, int month, int date) {
-    	//±Ş½ÄÀ» ¹ŞÀÚ
+    	//ê¸‰ì‹ì„ ë°›ì
     	this.setTitle("LOADING.....");
         URL url;
         HttpURLConnection conn;
@@ -270,7 +270,7 @@ public class Gupsik extends JFrame{
             		String l = line.substring(index, index1+1);
             		if(l.equals("(" + month + "/" + (date)+")")){
             			mode=1;
-            			//È¨ÆäÀÌÁö ¾ç½Ä¿¡ µû¶ó ÆÄ½Ì
+            			//í™ˆí˜ì´ì§€ ì–‘ì‹ì— ë”°ë¼ íŒŒì‹±
             			rd.readLine();
             			rd.readLine();
             			rd.readLine();
@@ -301,7 +301,7 @@ public class Gupsik extends JFrame{
             }
             rd.close();
         } 
-        //¿¡·¯°¡ ³ª¸é ¿¡·¯ Á¤º¸¸¦ Ãâ·ÂÇÏ°í °è¼Ó
+        //ì—ëŸ¬ê°€ ë‚˜ë©´ ì—ëŸ¬ ì •ë³´ë¥¼ ì¶œë ¥í•˜ê³  ê³„ì†
         catch(StringIndexOutOfBoundsException e){
         	return new Vector<String>();
         }
@@ -320,14 +320,14 @@ public class Gupsik extends JFrame{
         } catch (Exception e) {
             e.printStackTrace();
         } 
-        //±Ş½Ä ¸Ş´º ¹İÈ¯
+        //ê¸‰ì‹ ë©”ë‰´ ë°˜í™˜
         return result;
         //end of function
     }
     
     String linetrace(String a){
-    	//À¯´ÏÄÚµå·Î ±ú´Ï´Â ¹®ÀÚ ex)'Ÿå' À» µÇµ¹¸°´Ù.
-    	//Ãâ·ÂÀÌ ±úÁö´Â ¹®ÀÚ´Â ´ç½ÅÀÇ ÄÄÇ»ÅÍ ¹®Á¦
+    	//ìœ ë‹ˆì½”ë“œë¡œ ê¹¨ë‹ˆëŠ” ë¬¸ì ex)'ÂŸ' ì„ ë˜ëŒë¦°ë‹¤.
+    	//ì¶œë ¥ì´ ê¹¨ì§€ëŠ” ë¬¸ìëŠ” ë‹¹ì‹ ì˜ ì»´í“¨í„° ë¬¸ì œ
     	String result="";
     	for(int i=0; i<a.length(); i++){
     		if(a.charAt(i)=='&'){
@@ -340,7 +340,7 @@ public class Gupsik extends JFrame{
     				if(k+1>=a.length())break;
     				k++;
     			}
-    			//º¯È¯
+    			//ë³€í™˜
     			String temp = a.substring(i+2, k);
     			int intv = Integer.parseInt(temp);
     			result += (char)intv;
@@ -353,7 +353,7 @@ public class Gupsik extends JFrame{
     }
     
     class ButtonAction implements ActionListener{
-		//¿À¸¥ÂÊ ¿ŞÂÊ ¹öÆ° ´­·¶À»¶§ Action
+		//ì˜¤ë¥¸ìª½ ì™¼ìª½ ë²„íŠ¼ ëˆŒë €ì„ë•Œ Action
     	@Override
 		public void actionPerformed(ActionEvent arg0) {
 			JButton btn = (JButton)arg0.getSource();
@@ -371,29 +371,3 @@ public class Gupsik extends JFrame{
     } 
     //end of class
 }//end of program
-/*public String getyoil(int i){
-//cal.get(Calendar.DAY_OF_WEEK) À» ÇÑ±¹¾î ¿äÀÏ·Î ¹Ù²Û´Ù.
-if(i>=8){
-	while(i>=8)i-=7;
-}
-if(i<1){
-	while(i<1)i+=7;
-}
-switch(i){
-case 1:
-	return "ÀÏ";
-case 2:
-	return "¿ù";
-case 3:
-	return "È­";
-case 4:
-	return "¼ö";
-case 5:
-	return "¸ñ";
-case 6:
-	return "±İ";
-default:
-	return "Åä";
-}
-}
-*/

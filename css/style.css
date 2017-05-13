@@ -1,0 +1,17 @@
+
+body {
+    background-color: black;
+    margin-top: 20px;
+}
+
+p.normal {
+    color : #FFFFFF;
+    font-family : "나눔고딕코딩";
+    font-style: normal;
+}
+
+p.italic{
+    color:white;
+    font-family: "나눔고딕코딩";
+    font-style: italic;
+}
